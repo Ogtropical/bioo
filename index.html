@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title">@</title>
+    <meta name="description" content="@og" />
+    <link rel="icon" type="image/jpg" href="fav.jpg" sizes="32x32" />
+    <link href="bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f24b0c19a4.js" crossorigin="anonymous"></script>
+    <script src="jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="profile.css">
+    <script src="browser.js"></script>
+
+
+</head>
+<style>
+    body {
+        cursor: url('https://cdn.discordapp.com/attachments/1172276058498805790/1172617632952885248/mouse_1.cur'), auto;    }
+
+    .user-box {
+        position: relative;
+        width: 800px;
+        background: transparent;
+        margin: max(1rem, 3vw);
+        padding: 3vw;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;    box-shadow: 0px 0px 10px 5px #5f106e;
+    animation: shadows 1.5s infinite;    border: 2px solid #030203;    text-align: center;
+  }
+
+.avatar {    border: 2px solid #030203;        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+      
+
+    a:hover {
+        cursor: url('https://cdn.discordapp.com/attachments/1172276058498805790/1172617632952885248/mouse_1.cur'), auto;
+    }
+
+    .user-box h1 {
+        font-family: 'New Rocker', sans-serif;
+        color: #000000;
+        text-align: center;
+        font-size: 35px;
+    }    
+
+    .user-box h2 {
+        font-family: 'New Rocker', sans-serif;
+        color: #000000;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .socials-box h2 {
+        font-family: 'New Rocker', sans-serif;
+        color: #000000;
+        text-align: center;
+    }
+
+    .socials-box p {
+        font-family: 'New Rocker', sans-serif;
+        color: #000000;
+        font-size: 20px;
+    }
+
+    i {
+        color: #fcfcfc;
+        text-align: center;
+    }
+
+    @keyframes shadows {
+        0% {
+            text-shadow: #48abe0 0 0 10px;
+            box-shadow: 0px 0px 20px 10px #48abe0;
+        }
+        50% {
+            text-shadow: blueviolet 0 0 10px;
+            box-shadow: 0px 0px 20px 10px blueviolet;
+        }
+        75% {
+            text-shadow: rebeccapurple 0 0 10px;
+            box-shadow: 0px 0px 20px 10px rebeccapurple;
+        }
+        100% {
+            text-shadow: #48abe0 0 0 10px;
+            box-shadow: 0px 0px 20px 10px #48abe0;
+        }
+    }
+
+    #toggleButton {
+        background-color: transparent;
+        color: #000000; 
+        border: 0px;
+    }
+
+    .username {
+        display: inline;
+        position: relative;
+    }
+
+    .username::before {
+        font-size: 15px;
+        font-family: 'New Rocker', sans-serif;
+        content: "UID: 19";
+        display: none;
+        position: absolute;
+        background-color: transparent;
+        color: #000000;
+        padding: 5px;
+        border-radius: 5px;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        white-space: nowrap;
+    }
+    
+    .username:hover::before {
+        display: block;
+        opacity: 1;
+    }
+
+    .view-count {
+        font-size: 20px;
+        font-family: 'New Rocker', sans-serif;
+        color: #000000;
+        position: absolute;
+        margin-left: 10px;
+        bottom: 0;
+        left: 0;
+    }
+
+    .vip-icon {
+        color: #fcfcfc;
+        font-size: 23px;
+    }
+
+    .admin-icon {
+        color: #fcfcfc;
+        font-size: 23px;
+    }
+
+    .dev-icon {
+        color: #fcfcfc;
+        font-size: 23px;
+    }
+
+    .nitro-icon {
+        color: #fcfcfc;
+        font-size: 23px;
+    }
+
+    .verified-icon {
+        color: #fcfcfc;
+        font-size: 23px;
+    }
+
+    .join-icon {
+        color: #fcfcfc;
+        font-size: 23px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .user-icon-box {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .icon-tooltip {
+        position: relative;
+        margin: 10px;
+      }
+      
+      .icon-tooltip::before {
+        font-size: 15px;
+        content: attr(data-tooltip);
+        position: absolute;
+        background-color: #030203;
+        color: #f1f3f3;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 5px;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -75px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s;
+        width: 150px;
+      }
+      
+      .icon-tooltip:hover::before {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+      }
+      
+      .social-icons a {
+        position: relative;
+        margin: 10px;
+      }
+      
+      .social-icons a::before {
+        font-size: 15px;
+        content: attr(data-tooltip);
+        position: absolute;
+        background-color: #030203;
+        color: #f1f3f3;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 5px;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -75px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s;
+        width: 150px;
+      }
+      
+      .social-icons a:hover::before {
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .special-icon-tooltip {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 10px;
+        display: flex;
+        white-space: nowrap;
+      }
+      
+      .special-icon-tooltip::before {
+        font-size: 15px;
+        content: attr(data-tooltip);
+        background-color: #030203;
+        color: #f1f3f3;
+        text-align: center;
+        border-radius: 6px;
+        z-index: 1;
+        margin-bottom: 45px;
+        margin-left: 10px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s;
+        width: 50px;
+      }
+      
+      .special-icon-tooltip:hover::before {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .enter-text {
+        color: #000000;
+        font-family: 'New Rocker', sans-serif;
+        box-shadow: 0px 0px 10px 5px #030203;
+        animation: shadows 1.5s infinite;
+        border: 2px solid #030203;
+      }
+
+    .profile-main-content {
+        display: none;
+    }</style>
+<body>
+<audio controls id="music" style="display: none;" loop>
+    <source src="" type="audio/mpeg">
+</audio>
+<div id="vanta"><video playsinline draggable="false" loop id="myVideo">
+    <source src="https://cdn.discordapp.com/attachments/1167171505998811176/1167245560789614742/x2mate.com-Punchmade_Dev_-_I_Scammed_New_York_Feat._Sha_Ek_Official_Music_Video-1080p.mp4" type="video/mp4">
+</video>    <button id="toggleButton"><i class="fa-solid fa-headphones"></i></button>    <section>    <div class="user-box" data-tilt><div class="parent">
+    <div class="image-container">
+    <img class="avatar" draggable="false" ondragstart="return false;" src="https://ogpeople.lol/pf.gif"></div>
+</div><br><h1 class="username">ogtropical </h1><h2 id="user-bio"></h2>
+<div class="social-icons">
+<a href="https://discord.gg/Phs4vbZ4RA" class="icon-tooltip" data-tooltip="Discord"><i class="fa-brands fa-discord"></i></a>
+<a href="https://www.youtube.com/@Tropical2Rich" class="icon-tooltip" data-tooltip="Youtube"><i class="fa-brands fa-youtube"></i></a>
+<a href="https://www.tiktok.com/@dnp0" class="icon-tooltip" data-tooltip="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+<a href="https://www.instagram.com/h_vn32" class="icon-tooltip" data-tooltip="Instagram"><i class="fa-brands fa-instagram"></i></a>
+<a href="https://ogtropical.lol" class="icon-tooltip" data-tooltip="Website"><i class="fa-solid fa-globe"></i></a>
+<a href="https://ogpeople.lol" class="icon-tooltip" data-tooltip="Website"><i class="fa-solid fa-globe"></i></a>
+</div>
+</div>
+</section>
+</div>
+<div id="splash" class="flex-container" onclick="hideSplash(); PlayMusic(); slideIn();">
+<!-- Center align Splash contents in all screen sizes -->
+    <div id="flex-item">
+        <h1 class="enter-text">ogtropical</h1>
+    </div>
+</div><script src="vanilla-tilt.min.js"></script>
+<script>
+
+function PlayMusic() {
+    var play = document.getElementById("music");
+    var play2 = document.getElementById("myVideo");
+
+    if (play !== null) {
+        if (play.getElementsByTagName('source').length > 0) {
+            play.play();
+        }
+    }
+
+    if (play2 !== null) {
+        // Check if the video source is defined
+        if (play2.getElementsByTagName('source').length > 0) {
+            play2.play();
+        }
+    }
+}
+function enterFullScreen() {
+    const splash = document.getElementById('splash');
+    if (splash.requestFullscreen) {
+        splash.requestFullscreen();
+    } else if (splash.mozRequestFullScreen) {
+        splash.mozRequestFullScreen();
+    } else if (splash.webkitRequestFullscreen) {
+        splash.webkitRequestFullscreen();
+    } else if (splash.msRequestFullscreen) {
+        splash.msRequestFullscreen();
+    }
+}
+
+function fade(element) {
+    var op = 1; // initial opacity
+    var start = null;
+    function step(timestamp) {
+        if (!start) start = timestamp;
+        var progress = timestamp - start;
+        element.style.opacity = Math.max(op - progress / 1000, 0);
+        element.style.filter = 'alpha(opacity=' + Math.max(op - progress / 1000, 0) * 100 + ")";
+        if (progress < 1000 && op > 0) {
+            window.requestAnimationFrame(step);
+        } else {
+            element.style.display = 'none';
+        }
+    }
+    window.requestAnimationFrame(step);
+}
+
+function hideSplash() {
+    // Get the screen width
+    var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+    if (screenWidth > 760) { // Adjust the screen width threshold as needed
+        var splash = document.getElementById('splash');
+        fade(splash);
+        PlayMusic();
+    } else {
+        var splash = document.getElementById('splash');
+        if (splash) {
+            fade(splash);
+            PlayMusic();
+        }
+    }
+}
+
+// Show the splash screen on page load
+document.getElementById('splash').style.display = 'inline';var audio = document.getElementById('music');
+var toggleButton = document.getElementById('toggleButton');
+var isPlaying = false;
+
+toggleButton.addEventListener('click', function () {
+    if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        toggleButton.innerHTML =
+        `<i class="fa-solid fa-play"></i>`;
+    } else {
+        audio.play();
+        isPlaying = true;
+        toggleButton.innerHTML = 
+        `<i class="fa-solid fa-pause"></i>`;
+    }
+});
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function typewriteTitle() {
+    var str = 'ogtropical';
+    for (let i = 0; i < str.length; i++) {
+        document.title += str.charAt(i);
+        await sleep(700);
+    }
+    
+    await sleep(500)
+
+    for (let i = str.length - 1; i >= 0; i--) {
+        document.title = document.title.slice(0, -1);
+        await sleep(700);
+    }
+  
+    typewriteTitle();
+}
+  
+typewriteTitle();    
+async function typewriteBio() {
+        var str = '.gg/isaenl | Discord:ogtropicall';
+        var element = document.getElementById("user-bio");
+        var delay = 400;
+        var isTyping = true;
+        if(str !== " ") {
+            var prefix = " |";
+        }
+    
+        while (true) {
+            if (isTyping) {
+                for (let i = 1; i <= str.length; i++) {
+                    element.textContent = str.substring(0, i) + prefix;
+                    if (str[i - 1] !== ' ') {
+                        await sleep(delay);
+                    }
+                }
+                isTyping = false;
+            } else {
+                for (let i = str.length - 1; i > 0; i--) {
+                    element.textContent = str.substring(0, i) + prefix;
+                    if (str[i - 1] !== ' ') {
+                        await sleep(50);
+                    }
+                }
+                isTyping = true;
+            }
+            await sleep(delay);
+        }
+    }
+    
+    typewriteBio();    
+
+new cursoreffects.bubbleCursor({ element: document.querySelector("#bubbles") })
+let music = document.getElementById("music");
+music.volume = 0.08;
+
+let vid = document.getElementById("myVideo");
+vid.volume = 0.08;
+
+</script>
+
+</body>
+</html>
